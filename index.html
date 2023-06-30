@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hoàng Sơn Todo App</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+				<div class="filtersAndSearch">
+					<div class="search">
+						<input type="text" id="search" placeholder="Search here..." />
+					</div>
+				</div>
+				<div class="listTodo">
+					<div class="noTodo" style="display: none">
+						<img src="assets/images/no-todo.png" alt="Image no todo" />
+						<h3>Seems like you have no todo.</h3>
+					</div>
+					<div class="existenceTodo" style="display: none"></div>
+				</div>
+				<div class="addTodo">
+					<div class="nameTodo">
+						<input type="text" id="todoName" class="nameTodo" placeholder="Your todo..." />
+					</div>
+					<input type="date" id="todoDeadline" />
+					<button id="addButton" type="submit" title="Add new todo">+</button>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
