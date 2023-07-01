@@ -37,6 +37,9 @@ $('#addButton').click(function (event) {
 	$('#todoDeadline').val('');
 	$('#todoName').focus();
 	toggleAddButton();
+
+	// Broadcast the new todo to other tabs
+	broadcastNewTodo();
 });
 
 $('body').on('input', '#todoName, #todoDeadline', function () {
@@ -58,6 +61,13 @@ $('.listTodo').on('click', '.delete-icon', function () {
 
 $('#search').on('input', function () {
 	renderTodoList();
+});
+
+// Listen for broadcasted new todo event from other tabs
+window.addEventListener('storage', function (event) {
+	if (event.key === Text.keysInLocalStorage.todos) {
+		renderTodoList();
+	}
 });
 
 function renderTodoList() {
@@ -114,4 +124,9 @@ function deleteTodo(todoId) {
 			localStorage.setItem(Text.keysInLocalStorage.todos, JSON.stringify(todos));
 		}
 	}
+}
+
+// Function to broadcast new todo event to other tabs
+function broadcastNewTodo() {
+	localStorage.setItem('newTodoEvent', Date.now().toString());
 }
